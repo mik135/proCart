@@ -1,38 +1,69 @@
-# create-svelte
+# Frontend Mentor - Product list with cart solution
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/main/packages/create-svelte).
+This is a solution to the [Product list with cart challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/product-list-with-cart-5MmqLVAp_d). Frontend Mentor challenges help you improve your coding skills by building realistic projects. 
 
-## Creating a project
+## Table of contents
 
-If you're seeing this, you've probably already done this step. Congrats!
+- [Overview](#overview)
+  - [The challenge](#the-challenge)
+  - [Screenshot](#screenshot)
+  - [Links](#links)
+- [My process](#my-process)
+  - [Built with](#built-with)
+  - [What I learned](#what-i-learned)
+  - [Continued development](#continued-development)
+  - [Useful resources](#useful-resources)
+- [Author](#author)
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
 
-# create a new project in my-app
-npm create svelte@latest my-app
-```
+## Overview
 
-## Developing
+### The challenge
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+Users should be able to:
 
-```bash
-npm run dev
+- Add items to the cart and remove them
+- Increase/decrease the number of items in the cart
+- See an order confirmation modal when they click "Confirm Order"
+- Reset their selections when they click "Start New Order"
+- View the optimal layout for the interface depending on their device's screen size
+- See hover and focus states for all interactive elements on the page
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
+### Screenshot
 
-## Building
+![](./screenshot.png)
 
-To create a production version of your app:
+### Links
 
-```bash
-npm run build
-```
+- Solution URL: [GitHub](https://github.com/mik135/pro-cart)
+- Live Site URL: [ProCart](https://pro-cart.vercel.app)
 
-You can preview the production build with `npm run preview`.
+## My process
 
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+### Built with
+
+- Semantic HTML5 markup
+- Flexbox
+- CSS Grid
+- Mobile-first workflow
+- [Svelte](https://svelte.dev/) - JS library
+
+### What I learned
+
+I learnt a lot about how svelte's reactivity works and worked with objects.
+
+### Continued development
+
+I still have to fix some active and hover states
+
+### Useful resources
+
+- [Svelte Interactive Tutorial](https://learn.svelte.dev) - This was the site I visited over and over.
+
+## Author
+
+- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/mik135)
+- Twitter - [@yourusername](https://www.twitter.com/Mike_SaviOr)
+
+
+
