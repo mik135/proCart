@@ -1,5 +1,5 @@
 <script>
-    export let imgUrl
+    export let imgObj
     export let name
     export let category
     export let price
@@ -7,6 +7,17 @@
     export let changeQuantity
     export let removeFromCart
     export let activated
+
+    let innerWidth = 0
+
+    let imgUrl
+    if(innerWidth <= 500) {
+        imgUrl = imgObj.mobile
+    } else if (innerWidth > 500 && innerWidth < 1000) {
+        imgUrl = imgObj.tablet
+    } else {
+        imgUrl = imgObj.desktop
+    }
     
     
     
@@ -52,17 +63,18 @@
             removeFromCart(name)
         }
     }
-    
 </script>
+
+<svelte:window bind:innerWidth />
 
 <div>
     <div class="upper">
         <img src={imgUrl} alt={name} class={selected ? "cardActive" : "cardInactive"}/>
         {#if selected}
             <button class="cartBtnBaseStyle cartBtnActive">
-                <button class="qtyBtn" on:click={decrementQuantity}><img src="assets/images/icon-decrement-quantity.svg" alt="decrement"/></button>
+                <button class="qtyBtn" on:click={decrementQuantity}><svg xmlns="http://www.w3.org/2000/svg" width="10" height="2" viewBox="0 0 10 2"><path fill="#fff" d="M0 .375h10v1.25H0V.375Z"/></svg></button>
                 {quantity}
-                <button class="qtyBtn" on:click={incrementQuantity}><img src="assets/images/icon-increment-quantity.svg" alt="increment" /></button>
+                <button class="qtyBtn" on:click={incrementQuantity}><svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="none" viewBox="0 0 10 10"><path fill="#fff" d="M10 4.375H5.625V0h-1.25v4.375H0v1.25h4.375V10h1.25V5.625H10v-1.25Z"/></svg></button>
             </button>
         {:else}
             <button on:click={handleAddToCartWithin} class="cartBtnBaseStyle cartBtn">
@@ -101,6 +113,7 @@
     .cardInactive {
         border: 0px solid transparent;
         transition: border 300ms ease-in;
+        
     }
 
     .cartBtnBaseStyle {
@@ -113,12 +126,20 @@
         font-weight: 600;
         padding: 15px 20px;
         border-radius: 30px;
+        cursor: pointer;
     }
     .cartBtn {
         gap: 7px;
         justify-content: center;
         background-color: white;
         border: 0.2px solid hsl(7, 20%, 60%);
+        cursor: pointer;
+
+        &:hover {
+            border-color: hsl(14, 86%, 42%);
+            color: hsl(14, 86%, 42%);
+            transition: all 200ms ease-in;
+        }
     }
 
     .cartBtnActive{
@@ -126,6 +147,7 @@
         background-color: hsl(14, 86%, 42%);
         justify-content: space-between;
         border: none;
+        cursor: pointer;
     }
 
     * {
@@ -156,12 +178,29 @@
     .qtyBtn {
         background-color: inherit;
         border: 2px solid white;
-        width: 20px;
-        height: 20px;
+        width: fit-content;
+        height: 25px;
         cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        display: grid;
+        place-items: center;
+        /* align-items: center; */
+        /* justify-content: center; */
         border-radius: 50%;
     }
+
+    .qtyBtn svg {
+        width: 10px;
+        height: 10px;
+        /* border: 3px solid red; */
+        margin: auto;
+        
+    }
+    .qtyBtn:hover {
+        background-color: white;
+        
+        & svg path {
+        fill: hsl(14, 86%, 42%);
+    }
+    }
+    
 </style>

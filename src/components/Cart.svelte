@@ -1,6 +1,10 @@
 <script>
     export let cart
     export let removeFromCart
+    export let openDialog
+    // import { flip } from 'svelte/animate'
+    import { slide } from 'svelte/transition'
+    // import { quintOut } from 'svelte/easing'
 
     $: itemsInCart = numberOfItemsInCart(cart)
 
@@ -37,8 +41,8 @@
                 <p>Your added items will appear here</p>
             </div>
         {:else}
-            {#each cart as item}
-                <div class="item">
+            {#each cart as item, i (item)}
+                <div class="item" transition:slide={{delay: 0, duration: 200 }}>
                     <div class="nameAndDesc">
                         <div>
                             <h4 class="name">{item.name}</h4>
@@ -64,7 +68,7 @@
                 <p>This is a <strong>carbon-neutral</strong> delivery</p>
             </div>
 
-            <button class="confirmBtn">Confirm Order</button>
+            <button class="confirmBtn" on:click={openDialog}>Confirm Order</button>
         {/if}
     </div>
 </section>
@@ -119,6 +123,7 @@
     }
 
     .removeBtn {
+        cursor: pointer;
         background-color: transparent;
         width: 20px;
         height: 20px;
@@ -149,7 +154,7 @@
         gap: 15px
     }
     .cart {
-        width: 90%;
+        width: 95%;
         /* height: 400px; */
         margin-top: 30px;
         margin-bottom: 50px;
@@ -181,6 +186,7 @@
     }
 
     .confirmBtn {
+        cursor: pointer;
         background-color: hsl(14, 86%, 42%);
         color: white;
         padding: 20px;
@@ -188,5 +194,11 @@
         border: none;
         font-size: 16px;
         font-family: 'Red Hat Text', sans-serif;
+    }
+
+    @media screen and (width <= 600px) {
+        .cart {
+            width: 90%;
+        }
     }
 </style>
